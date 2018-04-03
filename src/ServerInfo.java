@@ -19,51 +19,51 @@ public class ServerInfo implements Serializable {
         this.largBanda = largBanda;
     }
 
-    public InetAddress getIpServer() {
+    public synchronized InetAddress getIpServer() {
         return ipServer;
     }
 
-    public void setIpServer(InetAddress ipServer) {
+    public synchronized void setIpServer(InetAddress ipServer) {
         this.ipServer = ipServer;
     }
 
-    public int getPort() {
+    public synchronized int getPort() {
         return port;
     }
 
-    public void setPort(int port) {
+    public synchronized void setPort(int port) {
         this.port = port;
     }
 
-    public float getRTT() {
+    public synchronized float getRTT() {
         return RTT;
     }
 
-    public void setRTT(float RTT) {
+    public synchronized void setRTT(float RTT) {
         this.RTT = RTT;
     }
 
-    public float getRAM() {
+    public synchronized float getRAM() {
         return RAM;
     }
 
-    public void setRAM(float RAM) {
+    public synchronized void setRAM(float RAM) {
         this.RAM = RAM;
     }
 
-    public float getCPU() {
+    public synchronized float getCPU() {
         return CPU;
     }
 
-    public void setCPU(float CPU) {
+    public synchronized void setCPU(float CPU) {
         this.CPU = CPU;
     }
 
-    public float getLargBanda() {
+    public synchronized float getLargBanda() {
         return largBanda;
     }
 
-    public void setLargBanda(float largBanda) {
+    public synchronized void setLargBanda(float largBanda) {
         this.largBanda = largBanda;
     }
 }
