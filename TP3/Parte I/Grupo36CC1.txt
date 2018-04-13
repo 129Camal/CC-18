@@ -1,0 +1,177 @@
+1.
+A) Contém informação que determina os parametros operacionais dos servidores DNS. 
+Estes servidores permitem que as aplicações que correm no sistema operativo traduzam nomes de domí­nios para endereços IP, que são necessários para aceder a recursos de uma área local ou internet. 
+
+
+B)
+nslookup
+> set q=AAAA
+>www.google.pt
+
+www.google.pt has AAAA address 2a00:1450:4003:808::2003
+
+Resposta: google.pt tem endereço IPv6 2a00:1450:4003:808::2003. 
+
+nslookup
+> set q=AAAA
+>www.google.com
+
+www.google.com has AAAA address 2a00:1450:4003:803::2004
+
+Resposta: google.com tem endereço IPv6 2a00:1450:4003:803::2004. 
+
+C)
+nslookup
+> set q=NS
+>ccg.pt 
+
+ccg.pt nameserver = ns1.ccg.pt
+ccg.pt nameserver= ns3.ccg.pt
+
+Resposta: Os servidores de nome para ccg.pt são ns1.ccg.pt e ns3.ccg.pt.
+
+nslookup
+> set q=NS
+> pt.
+
+pt	nameserver = ns2.nic.fr.
+pt	nameserver = sns-pb.isc.org.
+pt	nameserver = a.dns.pt.
+pt	nameserver = b.dns.pt.
+pt	nameserver = c.dns.pt.
+pt	nameserver = d.dns.pt.
+pt	nameserver = e.dns.pt.
+pt	nameserver = ns.dns.br.
+pt	nameserver = ns2.dns.pt.
+
+Resposta: Todos os nameserver apresentados acima representam os servidores de nomes definidos para o domínio pt.
+nslookup
+> set q=NS
+> pt.
+
+
+.	nameserver = i.root-servers.net.
+.	nameserver = j.root-servers.net.
+.	nameserver = k.root-servers.net.
+.	nameserver = l.root-servers.net.
+.	nameserver = m.root-servers.net.
+.	nameserver = a.root-servers.net.
+.	nameserver = b.root-servers.net.
+.	nameserver = c.root-servers.net.
+.	nameserver = d.root-servers.net.
+.	nameserver = e.root-servers.net.
+.	nameserver = f.root-servers.net.
+.	nameserver = g.root-servers.net.
+.	nameserver = h.root-servers.net.
+
+Resposta: Todos os nameserver apresentados acima representam os servidores de nomes definidos para o domínio . .
+
+D)
+nslookup
+> set q=NS
+> eureka.software.
+
+Resposta: Tem name servers, logo um domí­nio.
+
+eureka.software	nameserver = ns-1241.awsdns-27.org.
+eureka.software	nameserver = ns-1624.awsdns-11.co.uk.
+eureka.software	nameserver = ns-312.awsdns-39.com.
+eureka.software	nameserver = ns-957.awsdns-55.net.
+
+nslookup
+> set q=A
+> eureka.software.
+
+Name:	eureka.software
+Address: 104.196.112.191
+
+Resposta: Há um host pois tem endereço IP.
+
+E)
+nslookup 
+>set q=SOA
+>ami.pt
+
+	origin = ns1.ami.pt
+	mail addr = dc.dot2web.pt
+	serial = 2017020201
+	refresh = 86400
+	retry = 7200
+	expire = 3600000
+	minimum = 86400
+
+Resposta: O servidor primário definido para o domi­nio ami.pt é ns1.ami.pt.
+
+Nslookup
+> server ns1.ami.pt
+Default server: ns1.ami.pt
+Address: 80.172.230.28#53
+> uminho.pt
+
+Resposta: Connection timed out. Ou seja, como não consegue chegar a outros domínios não consegue fazer queries recursivas. 
+
+
+
+F)
+nslookup
+>set q=MX
+>presidencia.pt
+
+presidencia.pt	mail exchanger = 50 mail2.presidencia.pt.
+presidencia.pt	mail exchanger = 10 mail1.presidencia.pt.
+
+Resposta: As mensagens são entregues em mail2.presidencia.pt ou mail1.presidencia.pt.
+
+G)
+Nslookup
+> set q=SOA
+> www.whitehouse.pt
+Server:		193.137.16.65
+Address:	193.137.16.65#53
+
+Non-authoritative answer:
+	www.whitehouse.pt	canonical name = whitehouse.pt.
+	whitehouse.pt
+	origin = ns1.dnscpanel.com
+	mail addr = tech.dominios.pt
+	serial = 2017122207
+	refresh = 3600
+	retry = 7200
+	expire = 1209600
+	minimum = 86400
+
+Authoritative answers can be found from:
+whitehouse.pt	nameserver = ns1.dnscpanel.com.
+whitehouse.pt	nameserver = ns2.dnscpanel.com.
+
+
+> set q=A
+> www.whitehouse.gov
+Server:		193.137.16.65
+Address:	193.137.16.65#53
+
+Resposta: É possí­vel obter o endereço primário, os mail address e os nome de servidores.
+		O endereço IPV4 usado é 193.137.16.65.
+
+H)
+Nslookup 2001:690:a00:1036:1113::247
+
+
+Server:		192.168.209.2
+Address:	192.168.209.2#53
+
+Non-authoritative answer:
+7.4.2.0.0.0.0.0.0.0.0.0.3.1.1.1.6.3.0.1.0.0.a.0.0.9.6.0.1.0.0.2.ip6.arpa	name = www.fccn.pt.
+
+Authoritative answers can be found from:
+6.3.0.1.0.0.a.0.0.9.6.0.1.0.0.2.ip6.arpa	nameserver = ns02.fccn.pt.
+6.3.0.1.0.0.a.0.0.9.6.0.1.0.0.2.ip6.arpa	nameserver = ns01.fccn.pt.
+ns01.fccn.pt	internet address = 193.136.192.40
+ns01.fccn.pt	has AAAA address 2001:690:a00:4001::200
+ns02.fccn.pt	internet address = 193.136.2.228
+
+Resposta: Nome do dominio é fccn.pt que é o responsável pelo IPv6.
+
+
+
+	
