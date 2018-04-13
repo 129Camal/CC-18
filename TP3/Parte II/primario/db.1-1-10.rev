@@ -1,0 +1,18 @@
+$TTL	604800
+@	IN	SOA	dns1.example.com.   hostmaster.example.com (
+			 2017031501	; Serial
+			 28800		; Refresh - 24 hours
+			 7200		; Retry - 2 hours
+			604800		; Expire - 7 days
+			86400 )		; Minimum TTL - 1 days
+
+@ IN NS dns1.cc.pt.
+
+1 IN PTR dns.cc.pt.
+2 IN PTR dns2.cc.pt.
+
+3 IN PTR Cliente1.cc.pt.
+4 IN PTR Portatil1.cc.pt.
+
+5 IN PTR Grupo36.cc.pt.
+
