@@ -1,18 +1,18 @@
-@  IN  SOA	 ns.cc.pt grupo36.cc.pt(
+$TTL 604800
+@	IN  	SOA 	dns.cc.pt. 	grupo36.cc.pt.(
+				2		;Serial	
+				604800		;Refresh		
+				86400		;Retry
+				2419200		;Expire
+				604800)		;Negative Cache TTL
 
-			      2		
-			 604800		
-			  86400	
-			2419200	
-			 604800 )
+@	IN NS dns.cc.pt.
+@	IN NS dns2.cc.pt.
+@	IN MX 10 mail.cc.pt.	
+@	IN MX 10 mail2.cc.pt.
 
-@			IN NS dns.cc.pt
-@			IN NS dns2.cc.pt
-@			IN MX 10 mail.cc.pt	
-@			IN MX 10 mail2.cc.pt
-
-mail IN A 10.1.1.30
-www IN A 10.1.1.30
-dns2 IN A 10.3.3.20
-dns IN A 10.1.1.1
-mail2 IN A 10.1.1.20
+mail	IN A 10.1.1.30
+www	IN A 10.1.1.30
+dns2	IN A 10.3.3.20
+dns	IN A 10.1.1.1
+mail2	IN A 10.1.1.20

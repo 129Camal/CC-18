@@ -1,10 +1,10 @@
 $TTL	604800
-@	IN	SOA	dns1.example.com.   hostmaster.example.com (
-			 2017031501	; Serial
-			 28800		; Refresh - 24 hours
-			 7200		; Retry - 2 hours
-			604800		; Expire - 7 days
-			86400 )		; Minimum TTL - 1 days
+@	IN	SOA	dns1.example.com.   hostmaster.example.com. (
+			4555127		; Serial
+			604800		; Refresh
+			86400		; Retry
+			2419200		; Expire
+			604800)		; Negative Cache TTL
 
 @ IN NS dns1.cc.pt.
 
