@@ -14,7 +14,8 @@ class Monitor:
         t1 = Thread(target=self.listening)
         t1.start()
 
-        self.send()
+        t2 = Thread(target=self.send)
+        t2.start()
 
     def listening(self):
         while True:
@@ -25,14 +26,19 @@ class Monitor:
                 end = time.time()
                 elapsedtime = end - self.time
                 self.table.update(msg, elapsedtime)
+                self.table.printdict()
 
     def send(self):
+        while True:
 
-        print("Sending message")
-        self.time = time.time()
+            print("Sending message")
+            self.time = time.time()
 
-        self.socket.sendto(bytes(json.dumps({"Type": 'probe_request'}), "utf-8"), ("239.8.8.8", 8888))
-        print("Message sent")
+            self.socket.sendto(bytes(json.dumps({"Type": 'probe_request'}), "utf-8"), ("239.8.8.8", 8888))
+
+            print("Message sent")
+
+            time.sleep(5)
 
 
 def main():

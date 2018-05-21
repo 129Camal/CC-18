@@ -1,25 +1,26 @@
 from monitor import Monitor
-from statusTable import statusTable
 from Client import Client
-
 import socket
-import thread
 from statusTable import statusTable
 
 
 def main():
     s = statusTable()
-    Monitor(s)
-    tcpserver = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    tcpserver.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-    tcpserver.bind(('localhost', 80))
+    m = Monitor(s)
+    tcp_server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    tcp_server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    tcp_server.bind(('localhost', 8001))
     threads = []
 
     while True:
-        tcpserver.listen(30)
-        (client_socket, (ip, port)) = tcpserver.accept()
-        backend_ip = statusTable.bestServer()
-        thread = Client.Client(client_socket, backend_ip)
+        tcp_server.listen(30)
+        print("CHEGUEI")
+        client_socket = tcp_server.accept()
+        print("CHEGUEI2")
+        bestserver = s.bestServer()
+        server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        server.connect((bestserver, 8000))
+        thread = Client.Client(client_socket, server)
         thread.start()
         threads.append(thread)
 

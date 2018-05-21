@@ -9,7 +9,11 @@ class statusTable:
 
                 break
 
-        diction = {'RAM': msg['RAM'], 'CPU': msg['CPU'], 'IP': msg['IP'], 'Door': msg['Door'], 'RTT': elapsedtime}
+        diction = {'RAM': msg['RAM'],
+                   'CPU': msg['CPU'],
+                   'IP': msg['IP'],
+                   'Door': msg['Door'],
+                   'RTT': elapsedtime}
 
         ram = msg['RAM']
         cpu = msg['CPU']
@@ -30,9 +34,8 @@ class statusTable:
         dictio = self.dictionary[first]
 
         ip = dictio['IP']
-        door = dictio['Door']
 
-        return ip, door
+        return ip
 
 
 class SortedDisplayDict(dict):
