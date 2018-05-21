@@ -1,17 +1,20 @@
 import time
 import socket
 import json
-
-
-from statusTable import statusTable
+from threading import Thread
 
 
 class Monitor:
 
-    def __init__(self):
+    def __init__(self, statusTable):
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        self.table = statusTable()
+        self.table = statusTable
         self.time = time.time()
+
+        t1 = Thread(target=self.listening)
+        t1.start()
+
+        self.send()
 
     def listening(self):
         while True:
@@ -24,7 +27,7 @@ class Monitor:
                 self.table.update(msg, elapsedtime)
 
     def send(self):
-        self.socket.setsockopt(socket.IPPROTO_IP, socket.IP_MULTICAST_TTL, 20)
+
         print("Sending message")
         self.time = time.time()
 
@@ -33,10 +36,7 @@ class Monitor:
 
 
 def main():
-
-    monitor = Monitor()
-    monitor.send()
-    monitor.listening()
+    Monitor()
 
 
 if __name__ == "__main__":

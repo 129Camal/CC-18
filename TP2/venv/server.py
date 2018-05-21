@@ -27,25 +27,23 @@ class BackEndServer:
 
         self.listening()
 
-
     def listening(self):
         while True:
             print("Waiting for message")
             message, address = self.socket.recvfrom(1024)
             msg = json.loads(message.decode())
+            print(msg)
 
             if msg['Type'] == 'probe_request':
                 message = json.dumps(serverstatus(address)).encode()
-
                 n = random.randint(0, 10)
                 time.sleep(n * 0.001)
                 self.socket.sendto(message, address)
 
 
-
-
 def main():
-    BackEndServer()
+    backend = BackEndServer()
+    backend.listening()
 
 
 if __name__ == "__main__":
