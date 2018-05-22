@@ -4,7 +4,7 @@ import time
 import random
 import struct
 import psutil
-
+import hashlib
 
 def serverstatus(address):
     cpu = psutil.cpu_percent(interval=None)
@@ -36,6 +36,7 @@ class BackEndServer:
 
             if msg['Type'] == 'probe_request':
                 message = json.dumps(serverstatus(address)).encode()
+
                 n = random.randint(0, 10)
                 time.sleep(n * 0.001)
                 self.socket.sendto(message, address)

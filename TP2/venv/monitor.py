@@ -35,7 +35,6 @@ class Monitor:
             self.time = time.time()
 
             self.socket.sendto(bytes(json.dumps({"Type": 'probe_request'}), "utf-8"), ("239.8.8.8", 8888))
-
             print("Message sent")
 
             time.sleep(5)

@@ -1,5 +1,5 @@
 from monitor import Monitor
-from Client import Client
+import Client
 import socket
 from statusTable import statusTable
 
@@ -16,11 +16,15 @@ def main():
         tcp_server.listen(30)
         print("CHEGUEI")
         client_socket = tcp_server.accept()
-        print("CHEGUEI2")
+        print("Recebi uma comunicação")
         bestserver = s.bestServer()
-        thread = Client.Client(client_socket, bestserver)
+        print("Connectar ao server")
+        print(bestserver)
+        thread = Client.ClientThread(client_socket, bestserver)
         thread.start()
+        print("Thread Cliente-Server ativa!")
         threads.append(thread)
+        print("Anexei a Thread!")
 
 
 if __name__ == "__main__":
