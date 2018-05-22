@@ -11,6 +11,8 @@ class Client(Thread):
         self.backend_ip = backend_ip
 
     def run(self, backend_ip):
+        backend_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        backend_socket.connect((backend_ip, 8000))
 
         data = self.client_sock.recv(4086)
         while True:
