@@ -11,11 +11,13 @@ def main():
     tcp_server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     tcp_server.bind(('localhost', 8000))
     threads = []
+    i = 0
 
     while True:
+        print(i)
         tcp_server.listen(30)
         print("CHEGUEI")
-        client_socket = tcp_server.accept()
+        (client_socket, (ip,port)) = tcp_server.accept()
         print("Recebi uma comunicação")
         bestserver = s.bestServer()
         print("Connectar ao server")
@@ -25,6 +27,7 @@ def main():
         print("Thread Cliente-Server ativa!")
         threads.append(thread)
         print("Anexei a Thread!")
+        i += 1
 
 
 if __name__ == "__main__":

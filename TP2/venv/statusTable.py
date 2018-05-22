@@ -18,8 +18,7 @@ class statusTable:
         ram = msg['RAM']
         cpu = msg['CPU']
 
-        # Lei do Cameltoe
-        formula = (ram + (1 / ((cpu + 0.01) * 0.01)) + (1 / elapsedtime)) / 100
+        formula = (ram * (1 - (cpu*0.01)) * elapsedtime) / 3
 
         self.dictionary[formula] = diction
 
@@ -30,11 +29,8 @@ class statusTable:
 
     def bestServer(self):
 
-        first = list(self.dictionary.keys())[0]
-        dictio = self.dictionary[first]
-
-        ip = dictio['IP']
-
+        posicao = max(self.dictionary, key=float)
+        ip = self.dictionary[posicao]['IP']
         return ip
 
 
