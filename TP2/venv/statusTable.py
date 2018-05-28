@@ -3,6 +3,7 @@ class statusTable:
         self.dictionary = {}
 
     def update(self, msg, elapsedtime):
+
         for key in self.dictionary:
             if self.dictionary[key]['IP'] == msg['IP']:
                 del self.dictionary[key]
@@ -18,7 +19,7 @@ class statusTable:
         ram = msg['RAM']
         cpu = msg['CPU']
 
-        formula = (ram * (1 - (cpu*0.01)) * elapsedtime) / 3
+        formula = (ram * (1 - (cpu * 0.01)) * elapsedtime) / 3
 
         self.dictionary[formula] = diction
 

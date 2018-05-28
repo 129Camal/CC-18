@@ -3,6 +3,17 @@ import threading
 from threading import Thread
 
 
+def replier(backend_sock, client_sock):
+    data = backend_sock.recv(4096)
+    while True:
+        if not data:
+            client_sock.close()
+            backend_sock.close()
+            break
+        client_sock.send(data)
+        data = backend_sock.recv(4096)
+
+
 class ClientThread(Thread):
 
     def __init__(self, client_sock, backend_ip):
@@ -15,7 +26,8 @@ class ClientThread(Thread):
     def run(self):
         print("CONECTEI!")
 
-        threading.Thread(target=self.replier, args=(self.backend_socket, self.client_sock))
+        threading.Thread(target=replier, args=[self.backend_socket, self.client_sock]).start()
+
         data = self.client_sock.recv(4096)
         while True:
             if not data:
@@ -25,12 +37,3 @@ class ClientThread(Thread):
             self.backend_socket.send(data)
             data = self.client_sock.recv(4096)
 
-    def replier(self):
-        data = self.backend_sock.recv(4096)
-        while True:
-            if not data:
-                self.client_sock.close()
-                self.backend_socket.close()
-                break
-            self.client_sock.send(data)
-            data = self.backend_socket.recv(4096)
