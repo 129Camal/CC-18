@@ -28,6 +28,7 @@ class statusTable:
     def printdict(self):
         print(self.dictionary)
 
+
     def bestServer(self):
 
         posicao = max(self.dictionary, key=float)

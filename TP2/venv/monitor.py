@@ -26,16 +26,15 @@ class Monitor:
                 end = time.time()
                 elapsedtime = end - self.time
                 self.table.update(msg, elapsedtime)
-                self.table.printdict()
 
     def send(self):
         while True:
-
-            print("Sending message")
+            self.table.printdict()
+            print("\n")
+            print("Sending Probe")
             self.time = time.time()
 
             self.socket.sendto(bytes(json.dumps({"Type": 'probe_request'}), "utf-8"), ("239.8.8.8", 8888))
-            print("Message sent")
 
             time.sleep(5)
 
