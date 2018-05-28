@@ -4,7 +4,6 @@ import time
 import random
 import struct
 import psutil
-import hashlib
 
 def serverstatus(address):
     cpu = psutil.cpu_percent(interval=None)
